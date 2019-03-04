@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <style>
+        td { text-align: center; border-bottom: 1px solid black;  padding:5px;}
+        table { margin: 20px auto; border-spacing:0;}
+        .first { background: #DDD;}
+        .div { color: blue; font-style: italic}
+    </style>
+  </head>
+  <body>
+      <script>
+          var num = parseInt( window.prompt("Enter the count of numbers :")) ;
+          
+          document.write("<table><tr class='first'><td>No</td><td>Random Number</td><td>Multiple of 3</td></tr>") ;
+          for ( var i=1 ; i<=num; i++) {
+              var rnd = Math.floor(Math.random() * 81) + 10 ;
+              document.write("<tr>");
+              document.write("<td>" + i + "</td>");
+              document.write("<td>" + rnd + "</td>");
+              if ( rnd % 3 == 0 ) {
+                 document.write("<td>Yes : <span class='div'>(" + (rnd / 3) + ")</span></td>") ; 
+              } else {
+                document.write("<td></td>");
+              }
+              document.write("</tr>");
+          }
+          
+      </script>
+  </body>
+</html>

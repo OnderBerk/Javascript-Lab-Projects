@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <style>
+        .absPos { position: absolute; height: 50px; border:1px solid black; top: 100px;}
+        div { text-align: center; }
+        span.val { background:black; color: yellow; line-height: 50px; }
+        #bar { height: 20px; position: absolute; left: 100px; background: #D99; text-align: center; border:1px solid black; }
+    </style>
+  </head>
+  <body>
+      <script>
+          var str = "" ;
+          var pos = 100 ;
+          var sum = 0 ;
+          var num = parseInt( window.prompt("Enter box count : "));
+          for ( var i=0; i<num; i++) {
+              var w = Math.floor(Math.random()* 101) + 50 ; 
+              sum += w ;
+              var colorValue = Math.floor(2.5 * w - 125) ;
+              var color = "rgb(" + colorValue + "," + colorValue + "," + colorValue + ")" ;
+              var height = 100 + i * 51 ;
+              str += "<div class='absPos' style='left:" + pos + "px; top:" + height + "px; width: " + w + "px; background:" + color + "'>";
+              str += "<span class='val'>" + w + "</span></div>";
+              pos += w + 1;
+          }
+          document.write(str);
+          document.write("<div id='bar' style='top:" + (105 + 51*num) +"px; width:" + (sum + num) +"px'>" + sum + "</div>");
+          
+          
+      </script>
+  </body>
+</html>

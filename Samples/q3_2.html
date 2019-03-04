@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <style>
+        table { border:1px solid black; border-spacing:0; margin:20px auto;}
+        td { border:1px solid black; padding:5px; text-align: center;}
+        .label { background: #DDD; font-weight: bold;}
+    </style>
+  </head>
+  <body>
+      <form name="myForm">
+      <table>
+          <tr>
+              <td colspan="6"><h1>Company Support</h1></td>
+          </tr>
+          
+          <tr>
+              <td class="label">Marital Status:</td>
+              <td>
+                  <select name="status">
+                      <option value="0">Single</option>
+                      <option value="1">Married</option>
+                  </select>
+              </td>
+              <td class="label">Spouse Working: </td>
+              <td><input type="checkbox" name="working"></td>
+              <td class="label">Children: </td>
+              <td>
+                  <input type="text" name="children" value="0" size="5">
+              </td>
+          </tr>
+          <tr>
+              <td colspan="6"><input type="button" value="Calculate" onclick="calc()"/></td>
+          </tr>
+          <tr>
+              <td colspan="6">
+                  <textarea name="panel" cols="70" rows="6"></textarea>
+              </td>
+          </tr>
+      </table>
+          <script>
+              function calc() {
+                  var percentage = 50 ;
+                  var marital = myForm.status.value ;
+                  var children = parseInt(myForm.children.value) ;
+                  if ( isNaN(children) || children < 0) {
+                      myForm.panel.value = "Children count is not valid." ;
+                      return ;
+                  }
+                  
+                  if ( marital == 1 && myForm.working.checked == false) {
+                      percentage += 20 ;
+                  }
+                  
+                  percentage += myForm.children.value * 10 ;
+                  myForm.panel.value = "Percentage : " + percentage + "%";
+                  var total = 3 * percentage ;
+                  if ( total > 300 ) total = 300 ;
+                  myForm.panel.value += "\nTotal Support : " + total  + " TL" ;
+               
+              }
+          </script>
+      </form>
+  </body>
+</html>
