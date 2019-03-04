@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .barStyle {
+                background: #F66;
+                text-align: center;
+                color: #FFF;
+                border: 1px solid #A00;
+                height: 20px;
+                line-height: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // counters
+            var c = [0,0,0,0,0,0,0] ;
+            for ( var i = 0 ; i< 1000; i++) {
+                var rnd = Math.floor(Math.random()*6) + 1 ; // [1, 6]
+                c[rnd]++;
+            }
+            
+            function Bar(width) {
+                var el = "<div class='barStyle' style='width:" + width ;
+                el += "px'>" + width  + "</div>" ;
+                return el ;
+            }
+        </script>
+        <table>
+            <tr>
+                <td>Face</td>
+                <td>Frequency</td>
+            </tr>
+            <script>
+                for ( var i=1; i<= 6; i++) {
+                    document.write("<tr><td>" + i + "</td>") ;
+                    document.write("<td>" + Bar(c[i]) + "</td>");
+                    document.write("</tr>");
+                }
+            </script>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { font-family: arial;}
+            span { margin: 6px;}
+            .max { background: #6F6; padding:10px;}
+            #info { position: absolute; bottom: 20px;}
+        </style>
+    </head>
+    <body>
+        <script>
+           /* var numbers = [] ;
+            for ( var i=0; i<30; i++) {
+                numbers[i] = Math.floor(Math.random()*20) + 1 ; // [1,20]
+            } */
+            var numbers = new Array(30).fill(0); 
+            numbers.forEach(function(val,index,arr){
+               arr[index] =   Math.floor(Math.random()*20) + 1 ;
+            });
+            console.log(numbers);
+            
+            function stat(arr) {
+                var sum = 0 ;
+                var min = 100;
+                var max = 0 ;
+                
+                var freqTable = new Array(21).fill(0);
+                var maxVal = [] ;
+                var maxFreq = 0 ;
+                
+                
+                for ( var i=0; i<arr.length; i++) {
+                    sum += arr[i] ;
+                    if (arr[i] > max) {
+                        max  = arr[i] ;
+                    }
+                    
+                    if ( arr[i] < min) {
+                        min = arr[i] ;
+                    }
+                    
+                    var currValue = arr[i] ;
+                    freqTable[currValue]++;
+                    var currFreq = freqTable[currValue] ;
+                    
+                    if ( currFreq === maxFreq) {
+                        maxVal.push(currValue) ;
+                    } else if ( currFreq > maxFreq) {
+                        maxVal = [currValue];
+                        maxFreq = currFreq;
+                    }
+                    
+                }
+                var average = sum / arr.length ;
+                return [average, min, max, maxVal, freqTable] ;
+            }
+            
+            function displayFreqTable(freq, max) {
+               document.write("<p> <b>Frequencies :</b> [ ") ; 
+               for ( var i=1; i<freq.length; i++) {
+                   
+                   if (max.indexOf(i) !== -1) {
+                       document.write("<span class='max'>" + i + ":<strong>" + freq[i] + "</strong></span>"); 
+                   } else {
+                   document.write("<span>" + i + ":<strong>" + freq[i] + "</strong></span>"); 
+                }
+            }
+                document.write(" ]</p>") ;
+            }
+            
+            var result = stat(numbers);
+            document.write("<p> <b>Random Array :</b> [ " + numbers.join(" , ") + " ]</p>");
+            displayFreqTable(result[4], result[3]);
+            document.write("<p><b>Average :</b> " + result[0].toFixed(2) + "</p>");
+            document.write("<p><b>Min :</b> " + result[1] + "</p>");
+            document.write("<p><b>Max : </b>" + result[2] + "</p>");
+            result[3].sort(function(a,b){ return a-b;})
+            document.write("<p> <b>Most Frequent Items :</b> [ " + result[3].join(" , ") + " ]</p>");
+            
+        </script> 
+        <p id="info">F5 to refresh</p>
+    </body>
+</html>

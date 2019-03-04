@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table { border:1px solid black; border-collapse: collapse; margin:40px auto;}
+            td { border:1px solid black; text-align: center; padding: 10px;}
+            textarea { background: black; color: yellow; font-family: arial;}
+        </style>
+    </head>
+    <body>
+        <form name="calcForm">
+            <table>
+                <tr>
+                    <td><h3>Calculator</h3></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="log"> Log
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="num1" size="5">
+                        <select name="opr">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" name="num2" size="5">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Calculate" onclick="calculate()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="display" cols="45" rows="5" readonly></textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function calculate() {
+                //alert("it detects click..");
+                // 1. Input
+                var error = "" ;  // store error messages and use as a flag.
+                // get the first number
+                var n1 = parseFloat(calcForm.num1.value) ;
+                // validate it
+                if ( isNaN(n1)) {
+                    error += "Error in the first number\n" ;
+                }
+                console.log(n1); // for debugging
+                
+                // get the second number
+                var n2 = parseFloat(calcForm.num2.value) ;
+                // validate it
+                if ( isNaN(n2)) {
+                    error += "Error in the second number\n" ;
+                }
+                console.log(n2); // for debugging
+                                
+                // 2. Processing
+                var result ;
+                if ( error.length === 0) {
+                    // all input are validated.
+                    var op = calcForm.opr.value;
+                    switch( op ) {
+                        case "+" : result = n1 + n2 ; break ; 
+                        case "-" : result = n1 - n2 ; break ; 
+                        case "*" : result = n1 * n2 ; break ; 
+                        case "/" : {
+                                 if ( n2 === 0) {
+                                  error += "Div by zero\n"; 
+                                } else {
+                                 result = n1 / n2 ;
+                             }
+                        } break ; 
+                    }
+                    
+                } 
+                // 3. Output
+                
+                if ( error.length === 0) {
+                    calcForm.display.value = "Result is " + result.toFixed(3) + "\n";
+                    // log checkbox is checked?
+                    if ( calcForm.log.checked) {
+                        var now = new Date() ;
+                        calcForm.display.value += now.getDate()+ " " + (now.getMonth()+1) + " " + now.getFullYear() + "\n";
+                        calcForm.display.value += now.getHours()+":" + now.getMinutes() + ":" + now.getSeconds();
+                    }
+                } else {
+                    calcForm.display.value = error ;
+                }
+                
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #canvas {
+                width: 300px; height: 300px;
+                border:2px solid black;
+                margin: 20px auto ;
+                background: #ffcc66;
+                position: relative ;
+            }
+            .circles {
+                position: absolute;
+                border: 1px solid black ;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="canvas">
+        <script>
+            var colors = ["red", "green", "blue", "yellow", "white" , "black", "magenta", "purple"] ;
+            function rndColor() {
+                return colors [ Math.floor(Math.random()*8)] ;
+            }
+            
+            function createDiv(){
+                var size = Math.floor( Math.random() * 51 ) + 30 ;
+                var maxPos = 300 - size ;
+                var rndX = Math.floor(Math.random() * maxPos)  ;
+                var rndY = Math.floor(Math.random() * maxPos) ;
+                var div = "<div class='circles' style='width:" + size + "px; height:" + size ;
+                div += "px; background:" + rndColor() + "; ";
+                div += "left: " + rndX + "px; top:" + rndY + "px; border-radius:" + size +"px'></div>" ;
+                console.log( div ) ;
+                document.write(div) ; 
+           }
+           
+           var num = parseInt( window.prompt("Enter number of circles : ", "3")) ;
+           if ( !isNaN(num)) {
+           for ( var i=0 ; i<num ; i++) {
+             createDiv() ;
+           }
+          } 
+            
+        </script>
+        </div>
+        <p style="text-align: center;">
+            <script>
+                if ( !isNaN(num) && num > 0) {
+                    document.write("Random " + num  + " circle(s)") ; 
+                }
+            </script>
+        </p>
+    </body>
+</html>

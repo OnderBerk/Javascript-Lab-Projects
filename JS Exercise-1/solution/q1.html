@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            span { margin-right: 10px;}
+        </style>
+    </head>
+    <body>
+        <script>
+            // get the upper limit
+            var num = parseInt(window.prompt("Enter upper limit : ")) ;
+            if ( isNaN(num)) {
+                str = "<p>Enter an integer number</p>"
+            } else if ( num < 1) {
+                    str = "<p>Enter a number greater than 1</p>"
+            } else {
+                str = "<p>" ;
+                for (var i=1; i <= num; i++) {
+                    var sz = (10 + i) + "px" ;
+                    str += "<span style='font-size:" + sz +"'>" + i + "</span>";
+                }
+                str += "</p>";
+            }
+            document.write(str);
+            
+        </script>
+    </body>
+</html>

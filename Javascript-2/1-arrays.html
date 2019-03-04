@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        .array { color:blue; font-style:italic; font-family:courier;}
+		#tictactoe { border-collapse: collapse; }
+		#tictactoe td { border:1px solid black; padding:0;}
+		#tictactoe td img { display: block; }
+		em { color: red; font-weight: bold; font-style: normal;}
+    </style>
+  </head>
+  <body>
+  <h1>Array Functions</h1>
+      <script>
+          function myJoin(msg, arr, sep) {
+	    var str = "<p>" + msg + " : <span class='array'>[" ;
+            var i;
+            for ( i=0; i<arr.length-1; i++) {
+                  str += arr[i] + sep ;
+            }
+            if ( arr.length !== 0)  str += arr[i] ;
+            str += "]</span></p>" ;
+            document.write(str);
+          }
+          function print(msg, arr = fruits) {
+              myJoin(msg, arr, ", ");
+          }
+        document.write("<h2>Creating Array</h2>");
+        
+        var fruits = [] ;
+        print('<em>var fruits = [] ;</em> Create empty array  ');
+        
+        var fruits = new Array(10) ;
+        print('<em>var fruits = new Array(10) ;</em> Array with 10 items  ');
+        
+        var fruits = new Array(10).fill(0);
+        print('<em>var fruits = new Array(10).fill(0);</em> Array with 10 items with 0 value ');
+        
+        var fruits = [ "banana", "melon", "cherry", "apple", "mango", "avacado"] ;
+        print('<em>var fruits = [ "banana", "melon", "cherry", "apple", "mango", "avacado"];</em> Initial Array  ');
+        
+        
+        print("<em>fruits.length</em> Initial Array : Size (" + fruits.length + ")");
+	
+        document.write("<h2>Array to String Conversion</h2>");
+        var out = fruits.join( " - ") ;
+        document.write("<em>fruits.join(' - ')</em> Convert to string by joining items with separator : <span class='array'>" + out + "</span>") ;
+
+        document.write("<h2>Iteration</h2>");
+        var array = [ 3, 5, 7, 5, 8, 9] ;
+        print("<em>var array = [ 3, 5, 7, 5, 8, 9] ;</em> Initial Array ", array);
+        
+        array.forEach(function(value, index, array) { array[index] = value + 1;}) ;
+        print("<em>array.forEach(<span style='color:green'>function(value, index, array) { array[index] = value + 1;}</span>) ;</em> Process array ", array);
+                
+        var fnArray = array.map(function(value) { return value*value + 2*value + 5;}) ;
+        print("<em>var fnArray = array.map(<span style='color:green'>function(value) { return value*value + 2*value + 5;}</span>) ;</em> Content of fnArray ", fnArray);
+        
+        
+        document.write("<h2>Modify(Add, Delete, Insert)</h2>");
+        fruits.push("grape") ;
+        print("<em>fruits.push('grape');</em> Add to end (grape)") ;
+          
+        fruits.unshift("strawberry");
+        print("<em>fruits.unshift('strawberry')</em> Add to start (strawberry)");
+          
+        var lastItem = fruits.pop() ;
+        print("<em>fruits.pop()</em> Remove last item (" + lastItem + ")");
+          
+        var firstItem = fruits.shift() ;
+        print("<em>fruits.shift()</em> Remove first item (" + firstItem + ")");
+		  
+        var thirdItem = fruits.splice(2,1) ; // from index 2, remove 1 element and return removed item(s)
+        print("<em>fruits.splice(2,1)</em> Remove the third item (" + thirdItem + ")");
+
+        var  insertItem = fruits.splice(2, 0, "strawberry" ) ;
+        print("<em>fruits.splice(2, 0, 'strawberry')</em> Insert after the second item (strawberry)") ;
+
+        document.write("<h2>Copy a part and Cloning</h2>");
+        // slice() does not change the orginal array, it cuts out some items.
+        var subArray = fruits.slice(3) ;
+        print("<em>fruits.slice(3)</em> Take out after 3rd item (no change in orginal array)", subArray) ;
+
+        var subArray = fruits.slice(1, 4) ;
+        print("<em>fruits.slice(1, 4)</em> Take out from 1 to 4 (exclusive)", subArray) ;
+
+        /* Copying/Cloning an Array */
+        var cloneFruits = fruits ; // it does not copy, it is a reference to the same array object.
+        print("<em>cloneFruits = fruits</em> Content of cloneFruits", cloneFruits ) ;
+        fruits[0] = "blackberry" ;
+        print("<em>fruits[0] = 'blackberry'</em> Content of fruits", fruits ) ;
+        print("<em>fruits[0] = 'blackberry'</em> Content of cloneFruits", cloneFruits ) ;
+
+
+        fruits[0] = 'banana' ;
+        print("<em>fruits[0] = 'banana'] </em> Content of fruits", fruits ) ;
+
+        var realCloneFruits = fruits.slice(0) ;
+        print("<em>realCloneFruits = fruits.slice(0)</em> Content of realContentFruits after setting first element to banana", realCloneFruits ) ;
+
+        fruits[0] = "blackberry" ;
+        print("<em>fruits[0] = 'blackberry'] </em> Content of fruits", fruits ) ;
+        print("<em>fruits[0] = 'blackberry'] </em> Content of realCloneFruits", realCloneFruits ) ;
+
+        var veg1 = [ 'parsley', 'lettuce', 'rocket' ] ;
+        var veg2 = [ 'tomato', 'cucumber' ] ;
+        var veg3 = [ 'green pepper', 'basil' ] ;
+        var salad = veg1.concat( veg2, veg3 ) ;
+
+        print("<em> veg1 = [ 'parsley', 'lettuce', 'rocket' ];</em> Content of veg1", veg1 ) ;
+        print("<em> veg2 = [ 'tomato', 'cucumber' ];</em> Content of veg2", veg2 ) ;
+        print("<em> veg3 = [ 'green pepper', 'basil' ];</em> Content of veg3", veg3 ) ;
+
+        print("<em>salad = veg1.concat(veg2, veg3)]</em> Content of salad", salad ) ;
+		  
+          /* Sorting Arrays */
+		  document.write("<h2>Sorting</h2>");
+          fruits.sort() ;
+        print("<em>fruits.sort()</em> Sorted (ascending)");
+          
+        fruits.reverse() ;
+        print("<em>fruits.reverse()</em> Reverse") ;
+		  
+        /* By default sorting is based on string comparison */
+
+        var numbers = [ 10, 3, 45, 100, 1000, 56 ] ;
+        print("<em>numbers</em> Orginal number array", numbers ) ;
+        var copyNumbers = numbers.slice(0) ; // clone number array. 
+        numbers.sort() ;
+        print("<em>numbers.sort()</em> Sort Numbers by default comparison function (alphabetic)", numbers ) ;
+        copyNumbers.sort(function (a,b) { return a-b;} ) ; // if custom compare function return positive, it swaps elements.
+        print("<em>copyNumbers.sort(<span style='color:green'>function (a,b) { return a-b;}</span> )</em> Sort Numbers by custom comparison function (numeric)", copyNumbers ) ;
+		  
+        document.write("<h2>Searching</h2>");
+        print("<em>fruits</em> Content of fruits", fruits ) ;
+        var pos = fruits.indexOf("banana");
+        document.write("<p><em>fruits.indexOf('banana')</em> Index of banana is " + pos + "</p>");
+          
+        pos = fruits.indexOf("grape");
+        document.write("<p><em>fruits.indexOf('grape')</em> Index of grape is " + pos + "</p>");
+          
+        var aFruit = fruits.find(function(a) { return a.charAt(0) === "a" ; }) ;
+        document.write("<em>var aFruit = fruits.find(<span style='color:green'>function(a) { return a.charAt(0) === 'a' ; }</span>)</em> fruit name starting with 'a' : " + aFruit ) ;
+          
+        var longnames = fruits.filter(function(a) { return a.length > 5; }) ;
+        print("<em>var longnames = fruits.filter(<span style='color:green'>function(a) { return a.length > 5; }</span>)</em> fruit names greater than 5 chars", longnames ) ;
+          
+        document.write("<h2>Parsing a string into an Array</h2>");
+        var person = "365465773:Ali:Gul:32";
+	document.write("<p>Parse the string <em>person='" + person + "'</em> into fields (tckimlik, name, surname, age)</p>");
+        var info = person.split(":");
+		  
+          document.write("<p><em>var info = person.split(':')</em> Name (info[1]) :" + info[1] + " Surname (info[2]) :  " + info[2] + " TCKimlik (info[0]) : " + info[0] + " Age (info[3]): " + info[3] + "</p>");
+		  
+		 	  
+          
+          // multi dimensional arrays.
+        var boardState = [ 
+                            [ -1, 0, 1], 
+                            [  0, 1, 1], 
+                            [  0,-1, 0] 
+                         ]; // 3x3 board size
+        var images = [ "o.jpg" , "x.jpg"] ;
+        document.write("<h2>Multi-dimensional Array</h2>");
+        document.write("<table id='tictactoe'>");
+        for ( var i=0; i< boardState.length; i++) {
+          document.write("<tr>");
+          for ( var j=0; j< boardState[i].length; j++ ) {
+                  var element = boardState[i][j];
+                      document.write("<td>");
+                      if ( element !== -1 ) {
+                        document.write("<img src='" + images[ element ] + "'>") ; 	  
+                      }
+                      document.write("</td>");
+              }
+               document.write("</tr>");
+        }
+		  
+          
+      </script>
+  </body>
+</html>

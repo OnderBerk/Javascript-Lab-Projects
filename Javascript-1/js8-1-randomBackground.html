@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function randomColor() {
+                var r = Math.floor( Math.random() * 256 ) ; 
+                var g = Math.floor( Math.random() * 256 ) ; 
+                var b = Math.floor( Math.random() * 256 ) ; 
+                var c = "rgb( " + r + ", " + g + ", " + b + " )" ;
+                return c ;
+            }
+                   
+            document.write("<style>") ;
+            document.write("body { background : " + randomColor() + "}") ;
+            document.write("</style>") ;
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

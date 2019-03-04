@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #main { width: 200px; height: 300px; border:1px solid black; margin: 20px auto;}
+            #main div { text-align: center;}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <script>
+                var num = [], sum ;
+                var colors = ["#F66", "#6F6", "#66F"] ;
+                do {
+                   num[0] = Math.floor(Math.random() * 71) + 10 ; // [10, 80]
+                   num[1] = Math.floor(Math.random() * 71) + 10 ; // [10, 80]
+                   sum = num[0] + num[1] ;
+                } while ( sum > 90) ;
+                num[2] = 100 - sum ;
+                
+                for ( var i=0; i<3; i++) {
+                    var style = "background : " + colors[i] + ";" ;
+                    style += "height : " + (num[i] * 3 ) + "px;" ;
+                    style += "line-height : " + (num[i] * 3 ) + "px;" ;
+                    document.write("<div style='" + style + "'>" + num[i] + " %</div>")
+                }
+                
+                
+            </script>
+        </div>
+    </body>
+</html>

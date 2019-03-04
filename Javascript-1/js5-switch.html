@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Switch Example</h1>
+        <script>
+            // fall, winter, spring, summer
+            var season = window.prompt("Enter a season : ", "fall") ;
+            var img  ;
+            var valid = true ;
+            switch( season ) {
+                case "fall" : img = "fall.jpg" ; break ;
+                case "winter" : img = "winter.jpg" ; break ;
+                case "spring" : img = "spring.jpg" ; break ;
+                case "summer" : img = "summer.jpg" ; break ;
+                default: valid = false ;
+               
+            }
+            
+            if ( valid ) {
+                document.write("<img src='" + img + "'/>") ;
+            } else {
+                window.alert("Wrong season name") ;
+            }
+            
+        </script>
+    </body>
+</html>

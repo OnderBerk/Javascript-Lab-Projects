@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <style>
+        .smaller { color: blue ;}
+        .greater { color: green ;}
+        .equal { font: italic bold 20px courier;}
+    </style>
+  </head>
+  <body>
+      <h1>Find Magic Number [10, 90]</h1>
+      <script>
+          
+          function getInteger() {
+            do {  
+              var n = parseInt(window.prompt("Enter a number")) ;
+              if ( isNaN(n)) {
+                  window.alert("Not an integer!") ;
+              }
+            } while(isNaN(n)) ;
+            return n ; 
+          }
+          
+          var rand = Math.floor( Math.random() * 81 + 10) ;
+          var counter = 0 ;
+          do {
+              num = getInteger() ;
+              counter++;
+              
+              if ( num > rand) {
+                  window.alert("Enter a smaller value" ) ;
+              } else if ( num < rand ) {
+                  window.alert("Enter a greater value" ) ;
+              }
+          } while( rand != num ) ;
+          
+          document.write("<p class='equal'>You found the number(" + rand + ") in " + counter + " trial(s)</p>" ) ;
+      </script>
+  </body>
+</html>

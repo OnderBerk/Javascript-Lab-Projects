@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Anonymous Functions - (Check out source code) </h1>
+        <script>
+			// add is a variable, it is a reference to a "function" object.
+			// add's type is "function"
+            var add = function( n1, n2) {
+                return n1 + n2 ;
+            };
+            
+            var sub = function(n1, n2) {
+                return n1-n2;
+            }
+            
+            var F = function ( n1, n2, fn) {
+                return n1 + n2 + fn(n1, n2) ;
+            }
+            
+			document.write("<p>" + F(10, 20, sub) + "</p>") ;
+			
+			var result = F(10, 20, function(a,b) {
+              return a * b;
+			});
+			
+			document.write("<p>" + result + "</p>");
+			
+            
+  
+        </script>
+    </body>
+</html>

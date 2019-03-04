@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            var numbers = [] ;
+            for ( var i=0; i<10; i++) {
+                numbers[i] = Math.floor(Math.random() * 20) + 1 ; // [1,20]
+            } 
+            
+           /* var numbers = new Array(10).fill(0) ;
+            numbers.forEach(function(val, index, arr){
+                arr[index] = Math.floor(Math.random() * 20) + 1 ;
+            }); */
+            
+            function top2( arr ) {
+                var max1 = -1 ;
+                var max2 = -1 ; 
+                for ( var i=0; i<arr.length; i++) {
+                    if ( arr[i] > max1) {
+                        max2 = max1 ;
+                        max1 = arr[i];
+                    } else if ( arr[i] > max2 && arr[i] !== max1) {
+                        max2 = arr[i];
+                    }
+                }
+                return [max1, max2] ;
+            }
+            
+            var maxValues = top2(numbers) ;
+            document.write("<p> <b>Random Array :</b> [ " + numbers.join(" , ") + " ]</p>");
+            document.write("<p> <b>Top 2 highest values :</b> [ " + maxValues.join(" , ") + " ]</p>");
+            
+        </script>
+    </body>
+</html>

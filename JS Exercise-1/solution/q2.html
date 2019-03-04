@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question #1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            .near {
+                font-size : 1.3em ;
+                font-weight: bold ;
+            }
+            span { margin-right: 30px;}
+        </style>
+    </head>
+    <body>
+        <script>
+            var inp = parseInt(window.prompt("Enter an integer between 1 and 50 :", "1") ) ;
+            document.write("<h1>User Number : " + inp + "</h1>") ;
+            for ( var i=0; i<10; i++) {
+                rnd = Math.floor(Math.random() * 50) + 1 ;
+                if ( rnd >= inp ) {
+                    document.write("<span class='near'>") ;
+                } else {
+                    document.write("<span>") ;
+                }
+                document.write( rnd + "</span>") ;
+            }
+        </script>
+        
+    </body>
+</html>

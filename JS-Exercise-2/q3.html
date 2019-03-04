@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table { border-collapse: collapse; margin: 30px auto;}
+            td { border:1px solid black; padding: 5px; text-align: center;}
+        </style>
+    </head>
+    <body>
+        <form name="menuForm">
+            <table>
+                <tr>
+                    <td colspan="2">MENU</td>
+                    <td rowspan="5">
+                        <textarea name="display" cols="45" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Appetizer</td>
+                            <td>
+                                <select name="app">
+                                    <option value="0">None</option>
+                                    <option value="1">Scotch Broth</option>
+                                    <option value="2">Potato Salad</option>
+                               </select>
+                            </td>
+                </tr>
+                <tr>
+                    <td>Main Course</td>
+                            <td>
+                                <select name="main">
+                                    <option value="0">None</option>
+                                    <option value="3">Roasted Lamb</option>
+                                    <option value="4">Fish and Chips</option>
+                               </select>
+                            </td>
+                </tr>
+                <tr>
+                    <td>Wine</td>
+                    <td><input type="checkbox" name="wine"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="Price" onclick="menuPrice()" >
+                    </td>
+                </tr>
+                
+            </table>
+        </form> 
+        <script>
+            function menuPrice() {
+              //  alert("ok") ;
+              var prices = [0, 5, 6, 10, 15] ;
+              var labels = ["", "Scotch Broth", "Potato Salad", "Roasted Lamb", "Fish and chips"];
+              
+              var app_price = prices[menuForm.app.value] ;
+              var app_label = labels[menuForm.app.value] ;
+              
+              var main_price = prices[menuForm.main.value] ;
+              var main_label = labels[menuForm.main.value] ;
+              
+              var wine_price = menuForm.wine.checked ? 10 : 0 ; 
+              
+              var total = app_price + main_price + wine_price ;
+              
+              menuForm.display.value = "---- MENU -----\n" ;
+              if ( total === 0) {
+                  menuForm.display.value +=  "Nothing Selected" ;
+              } else {
+                  if ( app_price !== 0) {
+                        menuForm.display.value += app_label + " " + app_price + " TL\n" ;  
+                  }
+                  
+                  if ( main_price !== 0) {
+                        menuForm.display.value += main_label + " " + main_price + " TL\n" ;  
+                  }
+                  
+                  if ( wine_price !== 0) {
+                        menuForm.display.value += "Wine : 10 TL\n" ;  
+                  }
+                   menuForm.display.value += "\nTotal = " + total ;
+              }
+              
+              
+            
+              
+            }
+        </script>
+        
+    </body>
+</html>

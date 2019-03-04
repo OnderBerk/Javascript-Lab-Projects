@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .error { color: red; font-weight: bold; text-align: center;}
+            p, h1 { text-align: center;}
+            p { margin-top: 100px; font-size: 40px;}
+            p span {  font-weight: bold; margin: 20px;}
+            #n1 { color: red;}
+            #n2 { color: blue;}
+            #sum { color: green;}
+        </style>
+    </head>
+    <body>
+        <h1>Addition of Two Numbers</h1>
+        <script>
+            // create variables
+            var n1, n2 ;
+            
+            // input from user
+            num1 = window.prompt("Enter the first number", "0");
+            num2 = window.prompt("Enter the second number", "0");
+            
+            // convert string to number
+            n1 = parseFloat(num1) ;
+            n2 = parseFloat(num2) ;
+            
+            // validate user inputs
+            var error = false ;
+            if ( isNaN(n1)) {
+                document.write("<p class='error'>The first number (" + num1 + ") is wrong</p>");
+                error = true ;
+            }
+            
+            if ( isNaN(n2)) {
+               document.write("<p class='error'>The second number (" + num2 + ") is wrong</p>");
+                error = true ; 
+            }
+            
+            // processing for valid data
+            if ( error === false) {
+                var sum = n1 + n2 ;
+
+                // output html element
+                var output = "<p>";
+                output += "<span id='n1'>" + n1 + "</span>" ;
+                output += " + " ;
+                output += "<span id='n2'>" + n2 + "</span>";
+                output += " = " ;
+                output += " <span id='sum'>" + sum + "</span>";
+                output += "</p>";
+
+                document.write(output) ;
+           }
+             
+        </script>
+    </body>
+</html>

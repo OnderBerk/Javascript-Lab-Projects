@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+              tr { background: #aaa;}
+              #first { background: #ffa; } 
+              table { border: 1px solid black ; }
+              td { border: 1px solid #ccc;}
+        </style>
+    </head>
+    <body>
+        <h1>Javascript For Loop</h1>
+        <script>
+            var num = parseInt( window.prompt("Enter a number between 3 and 10 :", "3")  ) ;
+            document.write("<table>");
+            document.write("<tr id='first'><td>Number</td><td>Squared</td></tr>");
+            for ( var i=0; i<=num; i++ ) {
+               document.write("<tr>");
+               document.write("<td>" + i + "</td>");
+               document.write("<td>" + (i*i) + "</td>");
+               document.write("</tr>") ;
+            }
+            document.write("</table>");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .even { color : red ;}
+            .odd { color: blue ; }
+        </style>
+    </head>
+    <body>
+        <h1>Logical Statement - Odd or Even</h1>
+        <script>
+            var num = parseInt( window.prompt("Enter a number : ")   ) ;
+            if ( isNaN(num)) {
+                window.alert("Error : Not a Number");
+            } else {
+                
+                if ( num % 2 == 0) {
+                    document.write("<p class='even'>EVEN</p>");
+                } else {
+                    document.write("<p class='odd'>ODD</p>");
+                }      
+            }
+            
+        </script>
+    </body>
+</html>

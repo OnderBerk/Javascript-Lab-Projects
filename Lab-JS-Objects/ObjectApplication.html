@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="Color.js" type="text/javascript"></script>
+        <script src="Rectangle.js" type="text/javascript"></script>
+        <style>
+            p , h3{ text-align: center; }
+            p span { margin-right: 20px;}
+            #container { position: relative; 
+                         width: 620px; height: 620px; 
+                         background: #DDD;
+                         border:2px solid #999 ;
+                         margin: 20px auto;
+            }
+            #panel { width: 620px; margin: 10px auto; color : blue;}
+        </style>
+    </head>
+    <body>
+        <script>
+            // An application based on Color and Rectangle classes.
+           
+            // Random color tests..
+            document.write("<p><b>Random Colors :</b> ");
+            for ( var i=0; i<5; i++) {
+                document.write( "<span>" + Color.random().hex() + "</span>") ;
+            }
+            document.write("</p>");
+            
+            // Random Rectangles
+            var rs = [] ;
+            document.write("<div id='container'>");                  
+            for ( var i=0 ; i<10; i++) {
+                var rect = Rectangle.random(i) ;
+                rs.push(rect) ;
+                document.write(rect.toHTML());
+            }
+            document.write("</div>");
+            
+            // Check all binary combinations.
+			document.write("<h3>Intersections</h3>");
+            document.write("<p id='panel'>");
+            for ( var i=0; i<rs.length - 1; i++) {
+                for ( var j = i+1; j < rs.length; j++ ) {
+                    if ( rs[i].isCollide( rs[j]) ) {
+                        document.write(i + " and " + j + " intersect. <br>");
+                    }
+                }
+            }
+            document.write("</p>");
+        </script>
+		<p>F5 to refresh</p>
+    </body>
+</html>
